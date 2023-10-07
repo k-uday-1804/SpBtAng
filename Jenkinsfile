@@ -20,6 +20,18 @@ pipeline{
             }
 
         }
+        stage('Database Query') {
+            steps {
+                script {
+                    def db = database(
+                        driverClass: 'com.mysql.cj.jdbc.Driver',
+                        url: 'jdbc:mysql://your_mysql_host:3306/your_database',
+                        user: 'your_username',
+                        password: 'your_password'
+                    )
+                }
+            }
+        }
         stage("Build Application"){
             steps {
                 sh "mvn clean package"
