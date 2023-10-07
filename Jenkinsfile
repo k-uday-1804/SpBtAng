@@ -25,9 +25,9 @@ pipeline{
                 script {
                     def db = database(
                         driverClass: 'com.mysql.cj.jdbc.Driver',
-                        url: 'jdbc:mysql://your_mysql_host:3306/your_database',
-                        user: 'your_username',
-                        password: 'your_password'
+                        url: 'jdbc:mysql://18.224.228.225:3306/your_database',
+                        user: 'movie',
+                        password: 'new_password'
                     )
                 }
             }
