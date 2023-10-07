@@ -23,9 +23,9 @@ pipeline{
         stage('Database Query') {
             steps {
                  script {
-                    def result = sql jdbcUrl: 'jdbc:mysql://18.224.228.225:3306/your_database',
+                    def result = sql jdbcUrl: 'jdbc:mysql://18.224.228.225:3306/movie',
                             driver: 'com.mysql.cj.jdbc.Driver',
-                            credentialsId: 'your_database_credentials',
+                            credentialsId: 'new_password',
                             query: 'SELECT * FROM your_table'
                  echo result
         }
