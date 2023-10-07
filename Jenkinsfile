@@ -26,7 +26,6 @@ pipeline{
                     def result = sql jdbcUrl: 'jdbc:mysql://18.224.228.225:3306/movie',
                             driver: 'com.mysql.cj.jdbc.Driver',
                             credentialsId: 'new_password',
-                            query: 'SELECT * FROM your_table'
                  echo result
         }
     }
