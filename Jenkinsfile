@@ -21,15 +21,18 @@ pipeline{
 
         }
         stage('Database Query') {
-            steps {
-                script {
-                    def result = sql(
-                        jdbcUrl: 'jdbc:mysql://18.224.228.225:3306/movie',
-                        driver: 'com.mysql.cj.jdbc.Driver',
-                        credentialsId: 'new_password',
-                        script: 'SELECT * FROM movie'
-                    )
-                    echo result
+    steps {
+        script {
+            database(
+                jdbcUrl: 'jdbc:mysql://18.224.228.225:3306/movie',
+                driver: 'com.mysql.cj.jdbc.Driver',
+                credentialsId: 'new_password'
+            ) {
+                def result = sql(
+                    script: 'SELECT * FROM movie'
+                )
+                echo result
+            }
         }
     }
 }
