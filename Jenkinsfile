@@ -30,6 +30,9 @@ pipeline{
                     // Download MySQL Connector
                     sh "curl -o mysql-connector-java.jar ${driverUrl}"
 
+                    // Set the classpath to include the MySQL Connector JAR
+                    env.CLASSPATH = "${WORKSPACE}/mysql-connector-java.jar:${env.CLASSPATH}"
+
                     database(
                         driver: 'com.mysql.cj.jdbc.Driver',
                         url: 'jdbc:mysql://18.224.228.225:3306/movie',
@@ -44,6 +47,7 @@ pipeline{
                 }
             }
         }
+
         stage("Build Application"){
             steps {
                 sh "mvn clean package"
